@@ -8,6 +8,17 @@ class Course extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'title',
+        'description',
+        'instructor_id', // Allow the instructor_id to be set through mass assignment
+    ];
+
     // A course belongs to an instructor (user)
     public function instructor()
     {
