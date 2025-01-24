@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // Schedule commands here
+        $schedule->command('reminders:send')->daily();
     }
 
     /**
@@ -38,4 +38,5 @@ class Kernel extends ConsoleKernel
         
         require base_path('routes/console.php');
     }
+    
 }
