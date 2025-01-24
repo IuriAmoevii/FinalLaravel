@@ -2,37 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lesson;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
 {
-    // List all lessons
     public function index()
     {
-        return response()->json(['message' => 'List all lessons']);
+        return response()->json(Lesson::all());
     }
 
-    // Get lesson by ID
     public function show($id)
     {
-        return response()->json(['message' => "Get lesson with ID $id"]);
+        return response()->json(Lesson::findOrFail($id));
     }
 
-    // Create a new lesson
     public function store(Request $request)
     {
-        return response()->json(['message' => 'Create a new lesson']);
+        $lesson = Lesson::create($request->all());
+        return response()->json($lesson, 201);
     }
 
-    // Update lesson by ID
     public function update(Request $request, $id)
     {
-        return response()->json(['message' => "Update lesson with ID $id"]);
+        $lesson = Lesson::findOrFail($id);
+        $lesson->update($request->all());
+        return response()->json($lesson);
     }
 
-    // Delete lesson by ID
     public function destroy($id)
     {
-        return response()->json(['message' => "Delete lesson with ID $id"]);
+        Lesson::findOrFail($id)->delete();
+        return response()->json(['message' => 'Lesson deleted successfully']);
     }
 }
