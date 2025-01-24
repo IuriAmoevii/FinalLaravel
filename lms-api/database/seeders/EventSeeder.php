@@ -12,11 +12,6 @@ class EventSeeder extends Seeder
     {
         $user = User::first(); // Use the first user for simplicity
 
-        Event::create([
-            'name' => 'Team Meeting',
-            'description' => 'Monthly team meeting to discuss project updates.',
-            'date' => now()->addDay(),
-            'user_id' => $user->id,
-        ]);
+        Event::factory()->count(5)->create();
     }
 }

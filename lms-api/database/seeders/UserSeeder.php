@@ -14,20 +14,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        // Creating an instructor
-        User::create([
-            'name' => 'John Doe',
-            'email' => 'john@example.com',
-            'password' => bcrypt('password'),
-            'role' => 'instructor',
-        ]);
-
-        // Creating a student
-        User::create([
-            'name' => 'Jane Smith',
-            'email' => 'jane@example.com',
-            'password' => bcrypt('password'),
-            'role' => 'student',
-        ]);
+        User::factory()->count(10)->create();
     }
 }
