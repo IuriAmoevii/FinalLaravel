@@ -14,3 +14,4 @@ Route::prefix('v1')->group(function () {
     Route::put('/courses/{id}', [CourseController::class, 'update']);
     Route::delete('/courses/{id}', [CourseController::class, 'destroy']);
 });
+
